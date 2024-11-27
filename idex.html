@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<style>* {box-sizing: border-box; margin: 0;}
+
+    :root {
+        --corbranca: #FFFFFF;
+        --corVermelha: #FD3B3B;
+        --corCinza: #dddddd;
+        --corCinzaClaro: #f5f5f5;
+        --corPreta2: #0a0909;
+        --corPreta: #0f0f0f;
+        --corAmarela: #e9a64f;
+        --fonteIngrediente:  "Amatic SC", sans-serif; 
+        --fonteBanner: "Dancing Script", cursive;
+        --tamanhoGrandeFonte: 4em;
+        --tamanhoMedioFonte: 2em;
+        --tamanhoNormalFonte: 1em;
+        --tamanhoPequenoFonte: 0.75em;
+        --margem-curta: 10px;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+    }   
+    
+    .e {
+        padding: 10px;
+    }
+    
+    .grande {font-size: var(--tamanhoGrandeFonte);} .medio {font-size: var(--tamanhoMedioFonte);} .pequeno {font-size: var(--tamanhoPequenoFonte);}
+    
+    .texto-branco {
+        color: var(--corbranca);
+    }
+    
+    .texto-preto {
+        color: var(--corPreta);
+    }
+    
+    .texto-vermelho {
+        color: var(--corVermelha);
+    }
+    
+    .texto-amarelo {
+        color: var(--corAmarela);
+    }
+    
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        padding: 0;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--corAmarela);
+    }
+    
+    body {
+        font-family: "Nunito", sans-serif;
+        font-size: var(--tamanhoNormalFonte);
+        box-sizing: border-box;
+        margin: 0;
+    }
+    
+    .banner-title {
+        color: var(--corbranca);
+        font-family: var(--fonteBanner);
+        font-size: var(--tamanhoGrandeFonte);
+    }
+    
+    .header-container {
+        background-color: var(--corPreta);
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        padding: 1% 0.5%;
+        max-height: 150px;
+        min-height: 80px;
+        width: 100%;
+    }   
+    .footer-container {
+        background-color: var(--corPreta);
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        padding: 3% 1.25%;
+    
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    .banner-div-container {
+        min-height: 400px;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .banner-section-container {
+        background-image: url("../img/banner1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center bottom;
+        min-height: 400px;
+    
+        display: flex;
+        justify-content: center;
+    }
+    
+    .banner-section-container-content {
+        display: flex;
+        flex-direction: column;   
+    }
+    
+    .endereco-section-container {
+        min-height: 100px;
+    }
+    
+    .endereco-div-container {
+        display: flex;
+        width: 60%;
+        min-width: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .endereco-section-container-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-container-endereco {
+        display: flex;
+    
+    }
+    
+    .list-section-container{
+        background-color: var(--corPreta2);
+        padding-bottom: 3em;
+    }
+    
+    .ingrediente {
+        font-family: var(--fonteIngrediente);
+        font-weight: 600;
+        font-size: 1.5em;
+    }
+    
+    .menu {
+        font-family: "Raleway", sans-serif;
+    }
+    
+    .list-div-container {
+        width: 60%;
+    }
+    
+    .pizza-content {
+        display: flex;
+        flex-direction: row;
+        transition: 250ms;
+        border-bottom: 5px dotted;
+        border-color: var(--corbranca);
+        border-radius: 5px;
+    }
+    
+    input[type="text"] {
+        font-family: "Nunito", sans-serif;
+        font-size: 1em;
+        border-style: solid;
+        border-radius: 0.4em;
+        
+        padding-left: 1em;
+        display: flex;
+        height: 2.5em;
+        width: 100%;
+    }
+    
+    input[type="email"] {
+        font-family: "Nunito", sans-serif;
+        font-size: 1em;
+        border-style: solid;
+        border-radius: 0.4em;
+        
+        padding-left: 1em;
+        display: flex;
+        height: 2.5em;
+        width: 100%;
+    }
+    
+    textarea {
+        font-family: "Nunito", sans-serif;
+        font-size: 1em;
+        border-style: solid;
+        border-radius: 0.4em;
+        
+        padding-left: 1em;
+        display: flex;
+        height: 10em;
+        width: 100%;
+    }
+    
+    .pizza-content:hover {
+        font-size: 1.2em;
+        transition: 150ms;
+        background-color: var(--corbranca);
+        color:            var(--corPreta);
+        cursor: pointer;
+    }
+    
+    .pizza-content-info {
+        width: 50%;
+    }
+    
+    
+    .pizza-content-price {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .button-plus {
+        display: none;
+        margin: 1em;
+        width: 30px;
+        height: 30px;
+        background-color: var(--corAmarela);
+    
+        justify-content: center;
+        align-items: center;
+    
+        font-size: 2em;
+        
+        border: 2px solid;
+        border-radius: 50px;
+        padding: 1em;
+    }
+    /*#grid {
+        display: grid;
+        grid: repeat(4, 50px) / auto-flow 80px;
+    }*/
+    .order-div-container {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+    
+    .order-div-title {
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid;
+        border-color: var(--corCinza);
+    }
+    
+    .pedido-container {
+        display: flex;
+        min-height: 100px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--corCinzaClaro);
+        border-bottom: 1px solid;
+        border-color: var(--corCinza);
+    }
+    
+    .icone {
+        max-width: var(--tamanhoMedioFonte);
+        margin-right: 1em;
+    }
+    
+    .desc-container-pedido {
+        margin-left: 5%;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly
+    }
+    
+    .quantidade-remover-container {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+    .quantidade-container-pedido {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+    .remover-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;        
+    }
+    
+    .remover-container:hover {
+        cursor: pointer;
+    }
+    
+    .pizza-pollar {
+        display: flex;
+        justify-content: center;    
+    }
+    
+    .pollar {
+        min-width: 20%;
+        max-width: 50%;
+    }
+    
+    .remover-png {
+        max-width: 1em;
+    }
+    
+    button:hover {
+        cursor: pointer;
+    }
+    
+    .order-div-title-confirm {
+        display: flex;
+        border-bottom: 1px solid;
+        border-color: var(--corCinza);
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .order-div-confirm {
+        background-color: var(--corVermelha);
+        border-radius: 10px;
+        border: 1px solid;
+        padding: 10px;
+    }
+    
+    .order-div-confirm:hover {
+        padding: 12px;
+        transition: 100ms;
+        font-size: 110%;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .info {
+        display: flex;
+    }
+    
+    .caixa-informacoes {
+        width: 60%;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    
+    img[alt="Quero Pizza"] {
+        height: 20px;
+    }
+    
+    img[alt="Quero Pizza Icone"] {
+        height: 60px;
+        border-radius: 50%;
+    }
+    
+    img[alt="Foto1"] {
+        height: 350px;
+        border-radius: 5px;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+    }
+    
+    .header-content {
+        width: 60%;
+    }
+    
+    .footer-content {
+        width: 60%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .caixa-informacao-content {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .caixa-informacao-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+    .main {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        background-color: var(--corPreta2);
+        padding-top: 150px;
+    }
+    
+    .main-content {
+        width: 60%;
+    }
+    
+    button[type="submit"] {
+        width: 100px;
+        font-family: "Nunito", sans-serif;  
+    }</style>
+
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/template.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/scriptGeral.js"></script>
+    <link rel="icon" href="/img/icon.png" class="icone-pagina">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quero Pizza</title>
+</head>
+<body>
+    <script>
+        let orderItems = [];
+        let totalPrice = 0;
+    
+
+        function selecionar(index) {
+            const pizzaElements = document.getElementsByClassName('pizza-content');
+            const selectedPizza = pizzaElements[index];
+            const pizzaName = selectedPizza.querySelector('[name="tipo"]').textContent;
+            const pizzaPrice = selectedPizza.querySelector('[name="custo"]').textContent;
+    
+            // Adicionar ao lista de pedidos
+            orderItems.push({
+                name: pizzaName,
+                price: pizzaPrice
+            });
+    
+            // Calcular preço total
+            totalPrice += parseFloat(pizzaPrice.replace(',', '.'));
+    
+            // Atualizar exibição do pedido
+            const orderContainer = document.getElementById('DIVordem');
+            const orderList = document.getElementById('order-list') || document.createElement('div');
+            orderList.id = 'order-list';
+            orderList.innerHTML = orderItems.map((item, idx) =>
+                `<div class="order-item">
+                <span>${item.name} - R$ ${item.price}</span>
+                <button onclick="removeItem(${idx})">❌</button>
+            </div>`
+            ).join('');
+    
+            orderContainer.appendChild(orderList);
+        }
+    
+        // Função para remover item do pedido
+        function removeItem(index) {
+            // Subtrair o preço do item removido
+            totalPrice -= parseFloat(orderItems[index].price.replace(',', '.'));
+    
+            // Remover item
+            orderItems.splice(index, 1);
+    
+            // Atualizar lista de pedidos
+            const orderList = document.getElementById('order-list');
+            orderList.innerHTML = orderItems.map((item, idx) =>
+                `<div class="order-item">
+                <span>${item.name} - R$ ${item.price}</span>
+                <button onclick="removeItem(${idx})">❌</button>
+            </div>`
+            ).join('');
+        }
+    
+        // Função para registrar pedido e enviar via WhatsApp
+        function registrarPedido() {
+            // Solicitar nome do cliente
+            const customerName = prompt('Por favor, digite seu nome:');
+            if (!customerName) return;
+    
+            // Solicitar endereço de entrega
+            const customerAddress = prompt('Digite seu endereço para entrega:');
+            if (!customerAddress) return;
+    
+            // Validar pedido
+            if (orderItems.length === 0) {
+                alert('Seu pedido está vazio. Selecione pelo menos uma pizza.');
+                return;
+            }
+    
+            // Construir mensagem do pedido
+            const orderMessage = `
+    Novo Pedido - Quero Pizza
+    
+    Nome: ${customerName}
+    Endereço: ${customerAddress}
+    
+    Pedido:
+    ${orderItems.map(item => `• ${item.name} - R$ ${item.price}`).join('\n')}
+    
+    Total: R$ ${totalPrice.toFixed(2).replace('.', ',')}
+    
+    Total de itens: ${orderItems.length}
+    `;
+    
+            // Codificar mensagem para WhatsApp
+            const encodedMessage = encodeURIComponent(orderMessage);
+    
+            // Número do WhatsApp (número da Quero Pizza)
+            const whatsappNumber = '5511988711038';
+    
+            // URL do WhatsApp com mensagem pré-preenchida
+            const whatsappUrl = "https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodedMessage}&type=phone_number&app_absent=0";
+    
+            // Abrir WhatsApp em nova aba
+            window.open(whatsappUrl, '_blank');
+    
+            // Limpar pedido após envio
+            orderItems = [];
+            totalPrice = 0;
+            document.getElementById('order-list').innerHTML = '';
+        }
+    
+    </script>
+<div class="content-wrapper">
+    <header class="header-container">
+        <div class="header-content">
+            <nav>
+                <img src="/img/icon.png" alt="Quero Pizza Icone">
+                <ul>
+                    <a href="index.html" class="texto-branco">Home</a>
+                </ul>
+                <ul>
+                    <a href="#cardapio" class="texto-branco">Cardápio</a>
+                </ul>
+                <ul>
+                    <a href="#casa" class="texto-branco">Nossa Casa</a>
+                </ul>
+                <ul>
+                    <a href="https://www.ifood.com.br/delivery/osasco-sp/quero-pizza-veloso/f206325b-9024-447e-b399-64589dc29d93" class="texto-branco">Delivery</a>
+                </ul>
+                <ul>
+                    <a href="feedback.php" class="texto-branco">Feedback</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="banner-section-container">
+        <div class="banner-div-container" id="home">
+            <div class="banner-section-container-content">
+                <div>
+                    <h1 class="banner-title e">O melhor sabor de Osasco</h1>
+                </div>
+                <div>
+                    <h2 class="banner-text e texto-branco">Venha descobrir nosso cardápio especial</h2>
+                </div>
+                <div>
+                    <p class="banner-desc e texto-branco" id="casa">Temos Pizza de Calabresa, Brócolis, Mussarela, Portuguesa e muito mais!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container info">
+        <div class="caixa-informacoes">
+            <div>
+                <h2 class="medio" style="
+                padding-top: 30px;
+            ">Quero Pizza</h2>
+                <hr>
+            </div>
+            
+            <div class="caixa-informacao-content">
+                <div class="caixa-informacao-content-wrapper">
+                <div>
+                    <div class="info">
+                        
+                        <img class="icone" src="/img/clock.png" alt="Quero Pizza" srcset="">
+                        <h3>Horários</h3>
+                    </div>
+                    <p>Das 16:00 até às 00:00</p>
+                </div>
+                <div>
+                    <div class="info">
+                        <img class="icone" src="/img/location.png" alt="Quero Pizza">
+                        <h3>Endereço</h3>    
+                    </div>
+                    <p>Av. Santiago Rodilha, 925-935 - Veloso, Osasco - SP, 06154-000</p>
+                    <a class="texto-preto" href="https://www.google.com/maps/place/Quero+Pizza/@-23.5616963,-46.817481,4335m/data=!3m1!1e3!4m10!1m2!2m1!1squero+pizza!3m6!1s0x94cefff2e965fdc9:0x9b3bee92738233a2!8m2!3d-23.5616963!4d-46.8071813!15sCgtxdWVybyBwaXp6YVoNIgtxdWVybyBwaXp6YZIBEHBpenphX3Jlc3RhdXJhbnTgAQA!16s%2Fg%2F11c6f5d1tz?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoJLDEwMjExMjM0SAFQAw%3D%3D">Ver mapa</a>
+                </div>
+                <div>
+                    <div class="info">
+                        <img class="icone" src="/img/phone.png" alt="Quero Pizza">
+                        <h3  id="cardapio">Telefone</h3>
+                    </div>
+                    <a href="https://api.whatsapp.com/send/?phone=5511958535489&text&type=phone_number&app_absent=0" class="texto-preto">(11) 95853-5489</a>
+                </div>
+                </div>
+                <div>
+                    <img src="/img/Foto1.png" alt="Foto1" style="
+                    margin-top: 5%;
+                    margin-bottom: 5%;
+                ">
+                </div>
+            </div>
+            </div>
+        </section>      
+        <section class="list-section-container container">
+            <div class="list-div-container">
+            <div class="container">
+                <h1 class="texto-branco e menu grande">M E N U</h1>
+            </div>
+            <div class="pizza-container texto-branco">
+                <div class="pizza-content" onclick="selecionar(0)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Mussarela</h3>
+                        <p class="e ingrediente">Mussarela com molho de tomate temperado</p>
+                    </div>
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">25,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(1)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Ricota</h3>
+                        <p class="e ingrediente">Ricota com molho de tomate</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">44,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(2)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Bacon</h3>
+                        <p class="e ingrediente">Mussarela com bacon e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">40,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(3)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Brócolis</h3>
+                        <p class="e ingrediente">Brócolis, bacon e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">50,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(4)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Calabresa</h3>
+                        <p class="e ingrediente">Calabresa, cebola e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">25,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(5)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Búfala</h3>
+                        <p class="e ingrediente">Mussarela de búfala</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">40,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(6)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Portuguesa</h3>
+                        <p class="e ingrediente">Presunto, ovo, cebola e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">30,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(7)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Alho</h3>
+                        <p class="e ingrediente">Alho frito, parmesão e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">48,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(8)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Catupiry</h3>
+                        <p class="e ingrediente">Catupiry com molho de tomate</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">37,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(9)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Vegetariana</h3>
+                        <p class="e ingrediente">Champignon, palmito, brócolis e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">53,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(10)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Abobrinha</h3>
+                        <p class="e ingrediente">Abobrinha grelhada em conserva com parmesão</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">26,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(11)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Escarola</h3>
+                        <p class="e ingrediente">Escarola temperada com aliche, cebola, mussarela e azeitonas verdes</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">66,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(12)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Margarida</h3>
+                        <p class="e ingrediente">Mussarela, parmesão, rodelas de tomate e manjericão</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">41,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(13)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Milho</h3>
+                        <p class="e ingrediente">Catupiry coberto de milho</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">26,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(14)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Moda da Casa</h3>
+                        <p class="e ingrediente">Presunto, azeitonas verdes picadas, coberta com mussarela</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">36,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(15)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Napolitana</h3>
+                        <p class="e ingrediente">Mussarela, parmesão e molho de tomate</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">36,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(16)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Provolone</h3>
+                        <p class="e ingrediente">Provolone com molho de tomate</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">47,00</p>
+                    </div>
+                </div>
+                
+                <div class="pizza-content" onclick="selecionar(17)">
+                    <div class="pizza-content-info">
+                        <h3 class="e medio texto-amarelo" name="tipo">Sardela</h3>
+                        <p class="e ingrediente">Filé de cavalinha, berinjela curtida, cebola e azeitonas verdes, mussarela</p>
+                    </div>  
+                    <div class="pizza-content-price">
+                        <p class="e medio" name="custo">46,00</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="order-section-container container">
+    <div class="order-div-container" id="DIVordem">
+        <div class="order-div-title-confirm">
+            <div class="order-div-title">
+                <img src="/img/entregaicon.png" alt="enfeite-entrega" class="icone">
+                <h1 class="menu">SEU PEDIDO</h1>
+            </div>
+            <div class="order-div-confirm texto-branco" type="button" onclick="registrarPedido()">
+                <p>Confirmar</p>
+            </div> 
+        </div>
+    </div>
+    </section>
+    <footer class="footer-container">
+        <div class="footer-content texto-branco">
+            <div>
+                <p>©2024 Quero Pizza. - Todos os direitos reservados</p>
+            </div>
+            <div>
+                <p>www.queropizza.com.br</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<section class="order-section-container container">
+    <div class="order-div-title-confirm">
+        <div id="order-list"></div>
+</section>
+</body>
+
+
+<script>
+
+    function limpa_formulário_cep() {
+        
+        document.getElementById('rua').value=("");
+        document.getElementById('bairro').value=("");
+        document.getElementById('cidade').value=("");
+        document.getElementById('uf').value=("");
+    }
+    function meu_callback(conteudo) {
+    if (!("erro" in conteudo)) {
+        
+        document.getElementById('rua').value=(conteudo.logradouro);
+        document.getElementById('bairro').value=(conteudo.bairro);
+        document.getElementById('cidade').value=(conteudo.localidade);
+        document.getElementById('uf').value=(conteudo.uf);
+    } 
+    else {
+        
+        limpa_formulário_cep();
+    }
+    }
+    
+    function pesquisacep(valor) {
+    
+    
+    var cep = valor.replace(/\D/g, '');
+    
+    
+    if (cep != "") {
+    
+       
+        var validacep = /^[0-9]{8}$/;
+    
+        
+        if(validacep.test(cep)) {
+    
+            
+            document.getElementById('rua').value="...";
+            document.getElementById('bairro').value="...";
+            document.getElementById('cidade').value="...";
+            document.getElementById('uf').value="...";
+    
+            
+            var script = document.createElement('script');
+    
+            script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+    
+            
+            document.body.appendChild(script);
+    
+        } 
+        else {
+            
+            limpa_formulário_cep();
+        }
+    } 
+    else {
+        
+        limpa_formulário_cep();
+    }
+    };
+    
+    // Variáveis globais para armazenar detalhes do pedido
+    let orderItems = [];
+    let totalPrice = 0;
+    
+    // Função para adicionar pizza selecionada ao pedido
+    function selecionar(index) {
+        const pizzaElements = document.getElementsByClassName('pizza-content');
+        const selectedPizza = pizzaElements[index];
+        const pizzaName = selectedPizza.querySelector('[name="tipo"]').textContent;
+        const pizzaPrice = selectedPizza.querySelector('[name="custo"]').textContent;
+    
+        // Verificar se pizza já existe no pedido
+        const existingItemIndex = orderItems.findIndex(item => item.name === pizzaName);
+    
+        if (existingItemIndex !== -1) {
+            // Incrementar quantidade se já existir
+            orderItems[existingItemIndex].quantity++;
+        } else {
+            // Adicionar novo item ao pedido
+            orderItems.push({
+                name: pizzaName,
+                price: pizzaPrice,
+                quantity: 1
+            });
+        }
+    
+        // Calcular preço total
+        totalPrice += parseFloat(pizzaPrice.replace(',', '.'));
+    
+        // Atualizar exibição do pedido
+        atualizarListaPedidos();
+    }
+    
+    // Função para atualizar lista de pedidos
+    function atualizarListaPedidos() {
+      const orderContainer = document.getElementById('DIVordem');
+      const orderList = document.getElementById('order-list') || document.createElement('div');
+      orderList.id = 'order-list';
+      orderList.innerHTML = orderItems.map((item, idx) =>
+          `<div class="pedido-container">
+              <div class="pizza-pollar">
+                  <img src="/img/${item.name}.png" alt="${item.name}" class="pollar">
+              </div>
+              <div class="desc-container-pedido">
+                  <span>${item.name}</span>
+                  <span>R$ ${item.price}</span>
+              </div>
+              <div class="quantidade-remover-container">
+                  <button onclick="alterarQuantidade(${idx}, -1)">-</button>
+                  <span>${item.quantity}</span>
+                  <button onclick="alterarQuantidade(${idx}, 1)">+</button>
+                  <button onclick="removerItem(${idx})">❌</button>
+              </div>
+          </div>`
+      ).join('');
+    
+      orderContainer.appendChild(orderList);
+    }
+    
+    // Função para alterar quantidade de itens
+    function alterarQuantidade(index, delta) {
+        const item = orderItems[index];
+        
+        // Alterar quantidade
+        item.quantity += delta;
+    
+        // Atualizar preço total
+        totalPrice += delta * parseFloat(item.price.replace(',', '.'));
+    
+        // Remover item se quantidade for zero
+        if (item.quantity <= 0) {
+            orderItems.splice(index, 1);
+        }
+    
+        // Atualizar lista de pedidos
+        atualizarListaPedidos();
+    }
+    
+    // Função para remover item completamente
+    function removerItem(index) {
+        const item = orderItems[index];
+        
+        // Subtrair preço total
+        totalPrice -= item.quantity * parseFloat(item.price.replace(',', '.'));
+    
+        // Remover item
+        orderItems.splice(index, 1);
+    
+        // Atualizar lista de pedidos
+        atualizarListaPedidos();
+    }
+    
+    // Função para registrar pedido e enviar via WhatsApp
+    function registrarPedido() {
+        // Solicitar nome do cliente
+        const customerName = prompt('Por favor, digite seu nome:');
+        if (!customerName) return;
+    
+        // Solicitar endereço de entrega
+        const customerAddress = prompt('Digite seu endereço para entrega:');
+        if (!customerAddress) return;
+    
+        // Validar pedido
+        if (orderItems.length === 0) {
+            alert('Seu pedido está vazio. Selecione pelo menos uma pizza.');
+            return;
+        }
+    
+        // Construir mensagem do pedido
+        const orderMessage = `
+    *Novo Pedido - Quero Pizza*
+    
+    *Nome:* ${customerName}
+    *Endereço:* ${customerAddress}
+    
+    *Pedido:*
+    ${orderItems.map(item => `• ${item.name} (x${item.quantity}) - R$ ${(parseFloat(item.price.replace(',', '.')) * item.quantity).toFixed(2).replace('.', ',')}`).join('\n')}
+    
+    *Total:* R$ ${totalPrice.toFixed(2).replace('.', ',')}
+    
+    Total de itens: ${orderItems.reduce((total, item) => total + item.quantity, 0)}
+    `;
+    
+        // Codificar mensagem para WhatsApp
+        const encodedMessage = encodeURIComponent(orderMessage);
+    
+        // Número do WhatsApp (número da Quero Pizza)
+        const whatsappNumber = '5511988711038';
+    
+        // URL do WhatsApp com mensagem pré-preenchida
+        const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodedMessage}&type=phone_number&app_absent=0`;
+    
+        // Abrir WhatsApp em nova aba
+        window.open(whatsappUrl, '_blank');
+    
+        // Limpar pedido após envio
+        orderItems = [];
+        totalPrice = 0;
+        atualizarListaPedidos();
+    }
+    </script>
+
+
+</html>
